@@ -1,0 +1,109 @@
+# CRM (Customer Relationship Management) Data Template
+# Use this template to generate realistic CRM database data
+
+database:
+  url: "sqlite:///crm.db"
+  comment: "Supports: sqlite:///, postgresql://, mysql://"
+
+tables:
+  # Contacts
+  contacts:
+    count: 200
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive", "lead", "prospect"]
+      source: ["website", "referral", "social_media", "email", "phone", "event"]
+      type: ["individual", "company"]
+    comment: "Contact information"
+
+  # Companies
+  companies:
+    count: 100
+    locale: "en_US"
+    custom_values:
+      industry: ["technology", "healthcare", "finance", "retail", "manufacturing", "education"]
+      size: ["startup", "small", "medium", "large", "enterprise"]
+      status: ["active", "inactive", "prospect"]
+    comment: "Company information"
+
+  # Deals/Pipeline
+  deals:
+    count: 500
+    locale: "en_US"
+    depends_on: ["contacts", "companies"]
+    custom_values:
+      stage: ["prospecting", "qualification", "proposal", "negotiation", "closed_won", "closed_lost"]
+      priority: ["low", "medium", "high", "urgent"]
+      status: ["active", "won", "lost", "on_hold"]
+    comment: "Sales deals and opportunities"
+
+  # Activities
+  activities:
+    count: 1000
+    locale: "en_US"
+    depends_on: ["contacts", "deals"]
+    custom_values:
+      type: ["call", "email", "meeting", "note", "task"]
+      status: ["scheduled", "completed", "cancelled"]
+      priority: ["low", "medium", "high"]
+    comment: "Activities and interactions"
+
+  # Tasks
+  tasks:
+    count: 300
+    locale: "en_US"
+    depends_on: ["contacts", "deals"]
+    custom_values:
+      status: ["pending", "in_progress", "completed", "cancelled"]
+      priority: ["low", "medium", "high"]
+      type: ["call", "email", "meeting", "follow_up", "demo"]
+    comment: "Tasks and follow-ups"
+
+  # Notes
+  notes:
+    count: 500
+    locale: "en_US"
+    depends_on: ["contacts", "companies", "deals"]
+    comment: "Notes and comments"
+
+  # Meetings
+  meetings:
+    count: 200
+    locale: "en_US"
+    depends_on: ["contacts"]
+    custom_values:
+      status: ["scheduled", "completed", "cancelled", "rescheduled"]
+      type: ["discovery", "demo", "review", "closing"]
+    comment: "Scheduled meetings"
+
+  # Email campaigns
+  campaigns:
+    count: 50
+    locale: "en_US"
+    custom_values:
+      status: ["draft", "scheduled", "sent", "paused"]
+      type: ["newsletter", "promotion", "announcement", "follow_up"]
+    comment: "Email marketing campaigns"
+
+  campaign_recipients:
+    count: 1000
+    locale: "en_US"
+    depends_on: ["campaigns", "contacts"]
+    custom_values:
+      status: ["sent", "opened", "clicked", "bounced", "unsubscribed"]
+    comment: "Campaign recipient tracking"
+
+  # Documents
+  documents:
+    count: 300
+    locale: "en_US"
+    depends_on: ["contacts", "companies", "deals"]
+    custom_values:
+      type: ["proposal", "contract", "invoice", "presentation", "other"]
+      status: ["draft", "sent", "signed", "rejected"]
+    comment: "Shared documents"
+
+global_settings:
+  default_locale: "en_US"
+  default_count: 100
+  max_count: 1000

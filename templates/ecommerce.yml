@@ -1,0 +1,98 @@
+# E-commerce Data Template
+# Use this template to generate realistic e-commerce database data
+
+database:
+  url: "sqlite:///ecommerce.db"
+  comment: "Supports: sqlite:///, postgresql://, mysql://"
+
+tables:
+  # Customer data
+  customers:
+    count: 100
+    locale: "en_US"
+    custom_values:
+      customer_type: ["individual", "business", "vip"]
+      status: ["active", "inactive", "suspended"]
+    comment: "Customer accounts"
+
+  # Product catalog
+  categories:
+    count: 20
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive"]
+    comment: "Product categories"
+
+  products:
+    count: 500
+    locale: "en_US"
+    depends_on: ["categories"]
+    custom_values:
+      status: ["active", "inactive", "out_of_stock"]
+      condition: ["new", "used", "refurbished"]
+    comment: "Product catalog"
+
+  # Orders
+  orders:
+    count: 1000
+    locale: "en_US"
+    depends_on: ["customers"]
+    custom_values:
+      status: ["pending", "processing", "shipped", "delivered", "cancelled", "refunded"]
+      payment_method: ["credit_card", "paypal", "bank_transfer", "cash_on_delivery"]
+      payment_status: ["pending", "completed", "failed", "refunded"]
+    comment: "Customer orders"
+
+  order_items:
+    count: 3000
+    locale: "en_US"
+    depends_on: ["orders", "products"]
+    custom_values:
+      status: ["pending", "shipped", "delivered", "cancelled"]
+    comment: "Order line items"
+
+  # Shipping
+  shipping_addresses:
+    count: 150
+    locale: "en_US"
+    depends_on: ["customers"]
+    comment: "Customer shipping addresses"
+
+  shipments:
+    count: 800
+    locale: "en_US"
+    depends_on: ["orders", "shipping_addresses"]
+    custom_values:
+      carrier: ["fedex", "ups", "dhl", "usps"]
+      status: ["pending", "in_transit", "delivered", "returned"]
+    comment: "Order shipments"
+
+  # Reviews and ratings
+  reviews:
+    count: 500
+    locale: "en_US"
+    depends_on: ["customers", "products"]
+    custom_values:
+      status: ["pending", "approved", "rejected"]
+    comment: "Product reviews"
+
+  # Inventory
+  inventory:
+    count: 500
+    locale: "en_US"
+    depends_on: ["products"]
+    comment: "Product inventory"
+
+  # Discounts and coupons
+  coupons:
+    count: 50
+    locale: "en_US"
+    custom_values:
+      type: ["percentage", "fixed_amount", "free_shipping"]
+      status: ["active", "inactive", "expired"]
+    comment: "Discount coupons"
+
+global_settings:
+  default_locale: "en_US"
+  default_count: 100
+  max_count: 1000

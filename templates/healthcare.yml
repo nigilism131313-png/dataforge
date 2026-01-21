@@ -1,0 +1,166 @@
+# Healthcare Data Template
+# Use this template to generate realistic healthcare database data
+
+database:
+  url: "sqlite:///healthcare.db"
+  comment: "Supports: sqlite:///, postgresql://, mysql://"
+
+tables:
+  # Patients
+  patients:
+    count: 200
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive", "deceased"]
+      gender: ["male", "female", "other"]
+      blood_type: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
+    comment: "Patient records"
+
+  # Doctors/Providers
+  doctors:
+    count: 50
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive", "on_leave"]
+      specialty: ["general_practice", "cardiology", "dermatology", "pediatrics", 
+                  "orthopedics", "neurology", "oncology", "radiology", "surgery"]
+      type: ["physician", "surgeon", "specialist", "resident", "fellow"]
+    comment: "Medical doctors and providers"
+
+  # Departments
+  departments:
+    count: 15
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive"]
+      type: ["inpatient", "outpatient", "emergency", "surgery", "icu", "radiology"]
+    comment: "Hospital departments"
+
+  # Appointments
+  appointments:
+    count: 500
+    locale: "en_US"
+    depends_on: ["patients", "doctors", "departments"]
+    custom_values:
+      status: ["scheduled", "confirmed", "in_progress", "completed", "cancelled", "no_show"]
+      type: ["consultation", "follow_up", "procedure", "emergency", "checkup"]
+      priority: ["low", "medium", "high", "urgent"]
+    comment: "Patient appointments"
+
+  # Medical records
+  medical_records:
+    count: 400
+    locale: "en_US"
+    depends_on: ["patients", "doctors"]
+    custom_values:
+      type: ["consultation", "lab_result", "imaging", "procedure", "prescription", "discharge_summary"]
+      status: ["draft", "final", "amended"]
+    comment: "Medical records and notes"
+
+  # Prescriptions
+  prescriptions:
+    count: 300
+    locale: "en_US"
+    depends_on: ["patients", "doctors"]
+    custom_values:
+      status: ["active", "completed", "cancelled", "expired"]
+      frequency: ["once_daily", "twice_daily", "three_times_daily", "as_needed", "weekly"]
+    comment: "Medication prescriptions"
+
+  # Lab tests
+  lab_tests:
+    count: 100
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive"]
+      category: ["blood", "urine", "imaging", "genetic", "other"]
+      type: ["routine", "diagnostic", "monitoring", "screening"]
+    comment: "Available lab tests"
+
+  lab_orders:
+    count: 400
+    locale: "en_US"
+    depends_on: ["patients", "doctors", "lab_tests"]
+    custom_values:
+      status: ["ordered", "in_progress", "completed", "cancelled"]
+      priority: ["routine", "urgent", "stat"]
+    comment: "Lab test orders"
+
+  lab_results:
+    count: 350
+    locale: "en_US"
+    depends_on: ["lab_orders"]
+    custom_values:
+      status: ["pending", "completed", "reviewed", "abnormal"]
+      result_type: ["normal", "abnormal", "critical", "inconclusive"]
+    comment: "Lab test results"
+
+  # Medications
+  medications:
+    count: 150
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive", "discontinued"]
+      category: ["antibiotic", "painkiller", "antihistamine", "cardiovascular", 
+                "diabetes", "mental_health", "vitamin", "other"]
+      form: ["tablet", "capsule", "liquid", "injection", "cream", "inhaler"]
+    comment: "Medication catalog"
+
+  # Allergies
+  allergies:
+    count: 100
+    locale: "en_US"
+    custom_values:
+      severity: ["mild", "moderate", "severe", "life_threatening"]
+      type: ["food", "medication", "environmental", "other"]
+      status: ["active", "resolved"]
+    comment: "Allergy information"
+
+  patient_allergies:
+    count: 150
+    locale: "en_US"
+    depends_on: ["patients", "allergies"]
+    custom_values:
+      status: ["active", "resolved"]
+    comment: "Patient allergy records"
+
+  # Insurance
+  insurance_providers:
+    count: 20
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive"]
+      type: ["private", "government", "employer_sponsored"]
+    comment: "Insurance providers"
+
+  patient_insurance:
+    count: 180
+    locale: "en_US"
+    depends_on: ["patients", "insurance_providers"]
+    custom_values:
+      status: ["active", "inactive", "expired"]
+      type: ["primary", "secondary", "tertiary"]
+    comment: "Patient insurance coverage"
+
+  # Billing
+  invoices:
+    count: 300
+    locale: "en_US"
+    depends_on: ["patients"]
+    custom_values:
+      status: ["draft", "sent", "paid", "overdue", "cancelled"]
+      type: ["service", "procedure", "medication", "lab", "other"]
+    comment: "Billing invoices"
+
+  invoice_items:
+    count: 600
+    locale: "en_US"
+    depends_on: ["invoices"]
+    custom_values:
+      type: ["consultation", "procedure", "lab_test", "medication", "room", "other"]
+    comment: "Invoice line items"
+
+global_settings:
+  default_locale: "en_US"
+  default_count: 100
+  max_count: 1000

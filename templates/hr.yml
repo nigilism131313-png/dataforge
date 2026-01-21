@@ -1,0 +1,146 @@
+# HR (Human Resources) Data Template
+# Use this template to generate realistic HR database data
+
+database:
+  url: "sqlite:///hr.db"
+  comment: "Supports: sqlite:///, postgresql://, mysql://"
+
+tables:
+  # Departments
+  departments:
+    count: 15
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive"]
+      location: ["headquarters", "remote", "branch_office"]
+    comment: "Company departments"
+
+  # Employees
+  employees:
+    count: 200
+    locale: "en_US"
+    depends_on: ["departments"]
+    custom_values:
+      status: ["active", "inactive", "on_leave", "terminated"]
+      employment_type: ["full_time", "part_time", "contract", "intern"]
+      gender: ["male", "female", "other", "prefer_not_to_say"]
+    comment: "Employee records"
+
+  # Positions/Jobs
+  positions:
+    count: 50
+    locale: "en_US"
+    depends_on: ["departments"]
+    custom_values:
+      status: ["active", "inactive"]
+      level: ["entry", "mid", "senior", "lead", "manager", "director", "executive"]
+      type: ["permanent", "contract", "temporary"]
+    comment: "Job positions"
+
+  # Employee assignments
+  employee_positions:
+    count: 250
+    locale: "en_US"
+    depends_on: ["employees", "positions"]
+    custom_values:
+      status: ["active", "inactive", "promoted", "transferred"]
+    comment: "Employee position assignments"
+
+  # Salaries
+  salaries:
+    count: 250
+    locale: "en_US"
+    depends_on: ["employees", "positions"]
+    custom_values:
+      status: ["active", "inactive"]
+      currency: ["USD", "EUR", "GBP"]
+      pay_type: ["hourly", "monthly", "annual"]
+    comment: "Salary information"
+
+  # Leave requests
+  leave_requests:
+    count: 300
+    locale: "en_US"
+    depends_on: ["employees"]
+    custom_values:
+      type: ["annual", "sick", "personal", "maternity", "paternity", "unpaid"]
+      status: ["pending", "approved", "rejected", "cancelled"]
+    comment: "Leave and time-off requests"
+
+  # Attendance
+  attendance:
+    count: 1000
+    locale: "en_US"
+    depends_on: ["employees"]
+    custom_values:
+      status: ["present", "absent", "late", "half_day"]
+    comment: "Daily attendance records"
+
+  # Performance reviews
+  performance_reviews:
+    count: 200
+    locale: "en_US"
+    depends_on: ["employees"]
+    custom_values:
+      status: ["draft", "submitted", "reviewed", "completed"]
+      rating: ["excellent", "good", "satisfactory", "needs_improvement", "unsatisfactory"]
+    comment: "Performance reviews"
+
+  # Training
+  training_programs:
+    count: 30
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive", "completed"]
+      type: ["onboarding", "technical", "leadership", "compliance", "soft_skills"]
+    comment: "Training programs"
+
+  training_enrollments:
+    count: 400
+    locale: "en_US"
+    depends_on: ["training_programs", "employees"]
+    custom_values:
+      status: ["enrolled", "in_progress", "completed", "dropped"]
+      completion_status: ["passed", "failed", "pending"]
+    comment: "Training program enrollments"
+
+  # Benefits
+  benefits:
+    count: 20
+    locale: "en_US"
+    custom_values:
+      status: ["active", "inactive"]
+      type: ["health", "dental", "vision", "life", "retirement", "other"]
+    comment: "Employee benefits"
+
+  employee_benefits:
+    count: 400
+    locale: "en_US"
+    depends_on: ["employees", "benefits"]
+    custom_values:
+      status: ["enrolled", "waived", "pending"]
+    comment: "Employee benefit enrollments"
+
+  # Recruitment
+  job_postings:
+    count: 40
+    locale: "en_US"
+    depends_on: ["positions"]
+    custom_values:
+      status: ["draft", "published", "closed", "filled"]
+      type: ["internal", "external", "both"]
+    comment: "Job postings and advertisements"
+
+  applications:
+    count: 500
+    locale: "en_US"
+    depends_on: ["job_postings"]
+    custom_values:
+      status: ["received", "under_review", "interview", "offered", "accepted", "rejected", "withdrawn"]
+      source: ["website", "linkedin", "referral", "indeed", "other"]
+    comment: "Job applications"
+
+global_settings:
+  default_locale: "en_US"
+  default_count: 100
+  max_count: 1000
