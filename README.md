@@ -1,3 +1,8 @@
+[![PyPI version](https://badge.fury.io/py/dataforge-mcp.svg)](https://badge.fury.io/py/dataforge-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+
+
 # DataForge MCP Server
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
@@ -313,16 +318,13 @@ python cli.py seed users 50 --custom '{"role": ["admin", "moderator"], "status":
 
 ## 🔮 Roadmap
 
-- [ ] Automatic table dependency resolution
-- [ ] Data templates for common domains (e-commerce, CRM, HR)
-- [ ] Support for complex data types (UUID, JSONB, arrays)
+- [x] ✅ Automatic table dependency resolution (Topological Sort)
+- [x] ✅ Data templates for common domains (E-commerce, CRM, HR)
+- [x] ✅ Support for complex data types (UUID, JSON, Arrays)
+- [x] ✅ Multi-locale support (15+ languages)
 - [ ] Data validation against constraints
 - [ ] Parallel data generation for large datasets
-- [ ] Connection pooling optimization
-- [ ] Progress bars for long operations
 - [ ] Docker support
-- [ ] Kubernetes Helm charts
-- [ ] GitHub Actions integration
 
 ## 🤝 Contributing
 
@@ -336,21 +338,17 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-This project is open-source. Please refer to the license file for details.
-
-## 🙏 Acknowledgments
-
-- [Faker](https://faker.readthedocs.io/) - For generating fake data
-- [SQLAlchemy](https://www.sqlalchemy.org/) - For database abstraction
-- [MCP](https://modelcontextprotocol.io/) - For the Model Context Protocol
+This project is open-source and licensed under the MIT License.
 
 ## 📞 Support
 
-- 📧 Email: support@dataforge.dev
-- 💬 Discord: [Join our community](https://discord.gg/dataforge)
-- 📖 Documentation: [docs.dataforge.dev](https://docs.dataforge.dev)
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/dataforge/issues)
+If you encounter any issues or have questions, please use the GitHub Issues system:
+
+* 🐛 **Report a Bug:** [GitHub Issues](https://github.com/nigilism131313-png/dataforge/issues)
+* 💡 **Request a Feature:** [GitHub Issues](https://github.com/nigilism131313-png/dataforge/issues)
+
+If you find this tool useful, please give it a ⭐️ on GitHub!
 
 ---
 
-**Made with ❤️ by the DataForge Team**
+Made with ❤️ by the DataForge Team
