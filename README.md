@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/dataforge-mcp.svg)](https://badge.fury.io/py/dataforge-mcp)
+[![PyPI version](https://img.shields.io/pypi/v/mcp-server-dataforge)](https://pypi.org/project/mcp-server-dataforge/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
@@ -12,6 +12,8 @@
 **DataForge** is a production-ready MCP (Model Context Protocol) server that enables AI agents, such as Claude and Cursor, to generate realistic test data and seed databases while maintaining referential integrity. It supports PostgreSQL, MySQL, and SQLite databases.
 
 ## 🚀 Quick Start
+
+[![PyPI version](https://img.shields.io/pypi/v/mcp-server-dataforge)](https://pypi.org/project/mcp-server-dataforge/)
 
 ### Installation
 
