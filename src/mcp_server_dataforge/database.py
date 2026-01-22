@@ -7,7 +7,7 @@ import json
 from typing import Dict, List, Any, Optional
 from pydantic import BaseModel
 from decimal import Decimal
-from topology import TopologySorter, get_table_order
+from .topology import TopologySorter, get_table_order
 
 # Supported locales
 SUPPORTED_LOCALES = [

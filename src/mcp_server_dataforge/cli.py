@@ -5,8 +5,8 @@ DataForge CLI - Command Line Interface for DataForge MCP Server
 import argparse
 import sys
 import json
-from database import DatabaseManager, SUPPORTED_LOCALES
-from config import ConfigLoader, load_config
+from .database import DatabaseManager, SUPPORTED_LOCALES
+from .config import ConfigLoader, load_config
 from typing import Optional
 
 

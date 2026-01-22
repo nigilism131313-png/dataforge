@@ -1,6 +1,6 @@
 import json
 from mcp.server.fastmcp import FastMCP
-from database import DatabaseManager
+from .database import DatabaseManager
 
 # Ініціалізація менеджера бази та MCP сервера
 db_manager = DatabaseManager()

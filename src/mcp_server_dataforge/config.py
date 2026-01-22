@@ -4,7 +4,7 @@ DataForge Configuration Module - YAML configuration support
 import yaml
 from pathlib import Path
 from typing import Dict, List, Any, Optional
-from database import SUPPORTED_LOCALES
+from .database import SUPPORTED_LOCALES
 
 
 class ConfigLoader:
