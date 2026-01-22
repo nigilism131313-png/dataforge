@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
   
 [project]
 name = "mcp-server-dataforge"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP Server for generating realistic test data with referential integrity"
 readme = "README.md"
 requires-python = ">=3.8"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "DataForge Contributors", email = "support@dataforge.dev"}
 ]
@@ -38,20 +38,19 @@ keywords = [
     "testing",  
     "development"  
 ]  
-classifiers = [  
-    "Development Status :: 4 - Beta",  
-    "Intended Audience :: Developers",  
-    "Topic :: Database",  
-    "Topic :: Software Development :: Libraries :: Python Modules",  
-    "Programming Language :: Python :: 3",  
-    "Programming Language :: Python :: 3.8",  
-    "Programming Language :: Python :: 3.9",  
-    "Programming Language :: Python :: 3.10",  
-    "Programming Language :: Python :: 3.11",  
-    "Operating System :: OS Independent",  
-    "License :: OSI Approved :: MIT License",  
-    "Framework :: AsyncIO",  
-]  
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Database",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Framework :: AsyncIO",
+]
   
 [project.urls]  
 Homepage = "https://github.com/yourusername/dataforge-mcp"  

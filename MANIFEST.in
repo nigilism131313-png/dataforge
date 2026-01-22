@@ -1,3 +1,0 @@
-include README.md
-include LICENSE
-recursive-include src/mcp_server_dataforge/templates *.yml
